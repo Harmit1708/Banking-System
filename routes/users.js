@@ -30,13 +30,25 @@ router.post("/deposit", async (req, res) => {
     let depo = await db
       .collection("Accounts")
       .findOne({ name: req.body.accountHolderName });
-    let sum = +depo.amount + +req.body.amount;
-    let update = await db
-      .collection("Accounts")
-      .findOneAndUpdate(
-        { name: req.body.accountHolderName },
-        { $set: { amount: Number(sum) } }
-      );
+      if(depo.amount == null){
+        depo.amount = 0;
+        let sum = +depo.amount + +req.body.amount;
+        let update = await db
+          .collection("Accounts")
+          .findOneAndUpdate(
+            { name: req.body.accountHolderName },
+            { $set: { amount:  Number(sum) } }
+          );
+      }
+      else{
+        let sum = +depo.amount + +req.body.amount;
+        let update = await db
+          .collection("Accounts")
+          .findOneAndUpdate(
+            { name: req.body.accountHolderName },
+            { $set: { amount: Number(sum) } }
+          );
+      }
     let depo2 = await db
       .collection("Accounts")
       .findOne({ name: req.body.accountHolderName });
