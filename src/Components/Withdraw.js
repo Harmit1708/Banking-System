@@ -11,7 +11,7 @@ function Withdraw() {
 
   let handleSubmit = async(values) => {
     if(formik.values.amount >= 500){
-      let res = await axios.post("http://localhost:8080/users/withdraw",values);
+      let res = await axios.post("https://banking-system0.herokuapp.com/users/withdraw",values);
       setWithdrawAmount(res.data.wdAmount);
       setMsg(res.data.message)
 

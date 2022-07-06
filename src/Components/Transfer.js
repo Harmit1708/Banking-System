@@ -5,7 +5,7 @@ import axios from "axios";
 function Transfer() {
   let [msg,setMsg] = React.useState();
   let handleSubmit = async(values) => {
-    let res = await axios.post("http://localhost:8080/users/transfer",values);
+    let res = await axios.post("https://banking-system0.herokuapp.com/users/transfer",values);
     setMsg(res.data.message)
     formik.resetForm();
   };

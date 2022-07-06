@@ -9,7 +9,7 @@ function CreateAccount() {
   let handleSubmit = async (values) => {
     generateAccountNumber++;
     values['accountNumber'] = generateAccountNumber;
-    let res = await axios.post('http://localhost:8080/users/create-account',values);
+    let res = await axios.post('https://banking-system0.herokuapp.com/users/create-account',values);
     setAccountNumebrOriginal(res.data.accountNumber);
     formik.resetForm()
   };

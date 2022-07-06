@@ -8,7 +8,7 @@ function Balance() {
   let [balance,setBalance] = React.useState();
 
   let handleSubmit = async(values) => {
-    let res = await axios.post("http://localhost:8080/users/check-balance",values);
+    let res = await axios.post("https://banking-system0.herokuapp.com/users/check-balance",values);
     setBalance(res.data.balance);
   }
 

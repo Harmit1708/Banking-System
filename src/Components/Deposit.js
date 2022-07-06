@@ -9,7 +9,7 @@ function Deposit() {
 
   let handleSubmit = async(values) => {
     if(formik.values.amount >= 500 && formik.values.amount <= 50000){
-      let res = await axios.post("http://localhost:8080/users/deposit",values);
+      let res = await axios.post("https://banking-system0.herokuapp.com/users/deposit",values);
       setAmount(res.data.amount);
       setCurrentBalance(res.data.cb);
       formik.resetForm();
